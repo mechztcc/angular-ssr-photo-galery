@@ -12,6 +12,7 @@ import { CardLoginComponent } from './components/card-login/card-login.component
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardPhotoComponent } from './components/card-photo/card-photo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,13 @@ import { CardPhotoComponent } from './components/card-photo/card-photo.component
     HomeComponent,
     CardPhotoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
