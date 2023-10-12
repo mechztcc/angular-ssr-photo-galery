@@ -15,6 +15,7 @@ import { CardPhotoComponent } from './components/card-photo/card-photo.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddPhotoComponent } from './components/add-photo/add-photo.component';
     LoginComponent,
     HomeComponent,
     CardPhotoComponent,
-    AddPhotoComponent
+    AddPhotoComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

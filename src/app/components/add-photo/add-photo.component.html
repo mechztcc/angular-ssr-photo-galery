@@ -1,6 +1,6 @@
 <button class="btn btn-primary" (click)="openModal(template)">
   <i class="fa-solid fa-plus"></i>
-  Add Photo
+  <b class="mx-1">Add Photo</b>
 </button>
 
 <ng-template #template>
@@ -39,7 +39,9 @@
         <input type="file" class="form-control p-3" />
       </div>
 
-      <button class="btn btn-primary p-3 w-100 mt-3">Confirm</button>
+      <button class="btn btn-primary p-3 w-100 mt-3">
+        <b>Confirm</b>
+      </button>
     </form>
   </div>
 </ng-template>
