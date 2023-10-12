@@ -1,0 +1,45 @@
+<button class="btn btn-primary" (click)="openModal(template)">
+  <i class="fa-solid fa-plus"></i>
+  Add Photo
+</button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      <i class="fa-solid fa-plus"></i>
+      Add Photo
+    </h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          [class.is-invalid]="hasErrorName"
+        />
+        <label for="floatingInput">Name</label>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text h-100">
+            <i class="fa-solid fa-image"></i>
+          </span>
+        </div>
+        <input type="file" class="form-control p-3" />
+      </div>
+
+      <button class="btn btn-primary p-3 w-100 mt-3">Confirm</button>
+    </form>
+  </div>
+</ng-template>

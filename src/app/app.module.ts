@@ -13,6 +13,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CardPhotoComponent } from './components/card-photo/card-photo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddPhotoComponent } from './components/add-photo/add-photo.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     HomeComponent,
     CardPhotoComponent,
+    AddPhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
