@@ -20,6 +20,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CustomHttpInterceptor } from './shared/interceptor/http.interceptor';
 import { LoadContentComponent } from './components/load-content/load-content.component';
 import { LoadButtonComponent } from './components/load-button/load-button.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LoadButtonComponent } from './components/load-button/load-button.compon
     ReactiveFormsModule,
     ModalModule.forRoot(),
     HttpClientModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     provideClientHydration(),
