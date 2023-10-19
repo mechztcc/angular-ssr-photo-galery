@@ -6,10 +6,11 @@
 
   <div class="row mt-5">
     <span>Last send photos</span>
-    <div class="col-12 col-md-4 col-lg-3">
-      <app-card-photo></app-card-photo>
+    <div class="col-12 col-md-4 col-lg-3" *ngFor="let photo of photos">
+      <app-card-photo [photo]="photo"></app-card-photo>
     </div>
   </div>
 
-  <app-not-found></app-not-found>
+  <app-load-content *ngIf="isLoading"></app-load-content>
+  <app-not-found *ngIf="photos.length == 0 && !isLoading"></app-not-found>
 </div>
