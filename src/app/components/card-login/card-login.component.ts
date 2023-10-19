@@ -1,6 +1,8 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpService } from 'src/app/shared/services/http.service';
 
 @Component({
   selector: 'app-card-login',
@@ -25,7 +27,14 @@ export class CardLoginComponent implements OnInit {
       this.formControls['password'].dirty
     );
   }
-  constructor(private fb: FormBuilder) {}
+
+  isLoading: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private httpService: HttpService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -43,9 +52,21 @@ export class CardLoginComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
+
     const payload = {
       email: this.formControls['email'].value,
       password: this.formControls['password'].value,
     };
+
+    this.httpService
+      .login(payload)
+      .subscribe((data) => {
+        localStorage.setItem('token', data.token);
+        this.router.navigate(['/']);
+      })
+      .add(() => {
+        this.isLoading = false;
+      });
   }
 }
