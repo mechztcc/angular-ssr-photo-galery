@@ -12,4 +12,8 @@ export class HttpService {
   login(payload: { email: string; password: string }): Observable<any> {
     return this.http.post<any>(`${this.api}/auth`, payload);
   }
+
+  findPhotos(): Observable<any> {
+    return this.http.get<any>(`${this.api}/photo/list`);
+  }
 }
