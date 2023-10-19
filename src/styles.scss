@@ -1,10 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 /* Importing Bootstrap SCSS file. */
-@import "./node_modules/bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+$main-color: #610c9f;
+$third-color: #da0c81;
+$secondary-color: #940b92;
+$light-color: #fff;
+$yellow-color: #ffdb80;
+
+$theme-colors: (
+  "light": $light-color,
+  "dark": $secondary-color,
+  "primary": $main-color,
+  "secondary": $secondary-color,
+  "info": $third-color,
+  "success": $main-color,
+  "warning": #ff9966,
+  "danger": $third-color,
+);
 
 * {
   font-family: "Rajdhani", sans-serif;
@@ -16,3 +32,5 @@
   min-height: 100vh;
   min-width: 100vw;
 }
+
+@import "./node_modules/bootstrap/scss/bootstrap";
