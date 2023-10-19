@@ -19,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CustomHttpInterceptor } from './shared/interceptor/http.interceptor';
 import { LoadContentComponent } from './components/load-content/load-content.component';
+import { LoadButtonComponent } from './components/load-button/load-button.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { LoadContentComponent } from './components/load-content/load-content.com
     AddPhotoComponent,
     NotFoundComponent,
     LoadContentComponent,
+    LoadButtonComponent,
   ],
   imports: [
     BrowserModule,
