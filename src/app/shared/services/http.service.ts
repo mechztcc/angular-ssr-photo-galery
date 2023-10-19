@@ -16,4 +16,8 @@ export class HttpService {
   findPhotos(): Observable<PhotoInterface[]> {
     return this.http.get<PhotoInterface[]>(`photo/list`);
   }
+
+  uploadFile(payload: FormData): Observable<PhotoInterface> {
+    return this.http.post<any>(`photo`, payload);
+  }
 }

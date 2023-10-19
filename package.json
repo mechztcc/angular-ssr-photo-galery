@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/platform-server": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@ngrx/entity": "^16.3.0",
     "@ngrx/store": "^16.3.0",
     "@nguniversal/express-engine": "^16.2.0",
     "bootstrap": "^5.2.3",

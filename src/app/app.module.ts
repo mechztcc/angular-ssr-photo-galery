@@ -21,6 +21,7 @@ import { CustomHttpInterceptor } from './shared/interceptor/http.interceptor';
 import { LoadContentComponent } from './components/load-content/load-content.component';
 import { LoadButtonComponent } from './components/load-button/load-button.component';
 import { StoreModule } from '@ngrx/store';
+import { photoReducer } from './shared/store/photo.reducer';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { StoreModule } from '@ngrx/store';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ photos: photoReducer }),
   ],
   providers: [
     provideClientHydration(),
