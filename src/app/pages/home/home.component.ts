@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { PhotosActions } from 'src/app/shared/store/photo.actions';
 import { PhotoInterface } from 'src/app/shared/types/photo.interface';
+import * as selectors from '../../shared/store/photo.selectors';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,7 @@ import { PhotoInterface } from 'src/app/shared/types/photo.interface';
 export class HomeComponent implements OnInit {
   isLoading: boolean = false;
 
-  store$ = this.store.select((stores) => {
-    const photos = stores['photos'].payload;
-    return photos;
-  });
+  store$ = this.store.select(selectors.allPhotos);
 
   photos: PhotoInterface[] = [];
   constructor(
@@ -33,8 +31,6 @@ export class HomeComponent implements OnInit {
       .findPhotos()
       .subscribe((data) => {
         this.photos = data;
-        console.log(data);
-
         this.store.dispatch(PhotosActions.addMultiple({ payload: data }));
       })
       .add(() => {

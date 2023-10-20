@@ -20,4 +20,8 @@ export class HttpService {
   uploadFile(payload: FormData): Observable<PhotoInterface> {
     return this.http.post<any>(`photo`, payload);
   }
+
+  remove(id: number): Observable<any> {
+    return this.http.delete<any>(`photo/${id}`);
+  }
 }

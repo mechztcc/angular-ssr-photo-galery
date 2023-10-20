@@ -1,13 +1,17 @@
-<div class="card p-3 mt-3 shadow-sm ">
+<div class="card p-3 mt-3 shadow-sm">
   <img [src]="photo.url" alt="" class="img" />
   <span class="my-2">{{ photo.name }}</span>
   <span>
     <i class="fa-solid fa-calendar-day text-primary"></i>
-    {{ photo.created_at | date: 'dd/MM/yy'}}
+    {{ photo.created_at | date : "dd/MM/yy" }}
   </span>
   <div class="d-flex justify-content-end">
-    <button class="btn btn-sm btn-danger w-100">
+    <button class="btn btn-sm btn-danger w-100" (click)="onRemove()" *ngIf="!isLoading">
       <i class="fa-solid fa-trash"></i>
+    </button>
+
+    <button class="btn btn-sm btn-danger w-100" disabled *ngIf="isLoading">
+      <i class="fa-solid fa-spinner fa-spin"></i>
     </button>
   </div>
 </div>

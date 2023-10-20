@@ -1,20 +1,27 @@
 import { createReducer, on } from '@ngrx/store';
-import { PhotosActions } from './photo.actions';
 import { PhotoInterface } from '../types/photo.interface';
-import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
+import { PhotosActions } from './photo.actions';
 
-export interface State extends EntityState<PhotoInterface> {}
-export const adapter: EntityAdapter<PhotoInterface> =
-  createEntityAdapter<PhotoInterface>();
+export interface State {
+  photos: PhotoInterface[];
+}
 
-export const initialState: State = adapter.getInitialState({});
+export const initialState: State = {
+  photos: [],
+};
 
 export const photoReducer = createReducer(
   initialState,
   on(PhotosActions.addMultiple, (state, { payload }) => {
-    return { ...state, payload };
+    return { ...state, photos: payload };
   }),
-  on(PhotosActions.addPhoto, (state, action) => {
-    return { ...state, payload: [...state['payload'], action.payload] };
+  on(PhotosActions.addPhoto, (state, { payload }) => {
+    return { ...state, photos: [...state.photos, payload] };
+  }),
+  on(PhotosActions.removePhoto, (state, { photoId }) => {
+    return {
+      ...state,
+      photos: state.photos.filter((photo) => photo.id !== photoId),
+    };
   })
 );
