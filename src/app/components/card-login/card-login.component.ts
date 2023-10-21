@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http.service';
+import { LocalizationService } from 'src/app/shared/services/localization.service';
 import { NotifierService } from 'src/app/shared/services/notifier.service';
 
 @Component({
@@ -30,16 +31,21 @@ export class CardLoginComponent implements OnInit {
   }
 
   isLoading: boolean = false;
+  coordination: { lat: string; long: string };
 
   constructor(
     private fb: FormBuilder,
     private httpService: HttpService,
     private router: Router,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private localizationService: LocalizationService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.localizationService.getPosition().then((data) => {
+      this.coordination = data;
+    });
   }
 
   initForm() {
@@ -59,8 +65,8 @@ export class CardLoginComponent implements OnInit {
     const payload = {
       email: this.formControls['email'].value,
       password: this.formControls['password'].value,
-      lat: '0',
-      long: '0',
+      lat: String(this.coordination.lat) ?? '0',
+      long: String(this.coordination.long) ?? '0',
     };
 
     this.httpService
