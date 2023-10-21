@@ -23,6 +23,7 @@ import { LoadButtonComponent } from './components/load-button/load-button.compon
 import { StoreModule } from '@ngrx/store';
 import { photoReducer } from './shared/store/photo.reducer';
 import { NotifierComponent } from './components/notifier/notifier.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { NotifierComponent } from './components/notifier/notifier.component';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     HttpClientModule,
+    NgxPaginationModule,
     StoreModule.forRoot({ photos: photoReducer }),
   ],
   providers: [

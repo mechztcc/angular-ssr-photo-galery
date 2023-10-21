@@ -13,6 +13,7 @@ import * as selectors from '../../shared/store/photo.selectors';
 export class HomeComponent implements OnInit {
   isLoading: boolean = false;
 
+  p: any;
   store$ = this.store.select(selectors.allPhotos);
 
   photos: PhotoInterface[] = [];
