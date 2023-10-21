@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpService } from 'src/app/shared/services/http.service';
+import { NotifierService } from 'src/app/shared/services/notifier.service';
 
 @Component({
   selector: 'app-card-create-account',
@@ -26,12 +29,16 @@ export class CardCreateAccountComponent implements OnInit {
   }
 
   get hasErrorName() {
-    return (
-      this.formControls['name'].invalid &&
-      this.formControls['name'].dirty
-    );
+    return this.formControls['name'].invalid && this.formControls['name'].dirty;
   }
-  constructor(private fb: FormBuilder) {}
+
+  isLoading: boolean = false;
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpService,
+    private router: Router,
+    private notifier: NotifierService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -50,10 +57,23 @@ export class CardCreateAccountComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
     const payload = {
       email: this.formControls['email'].value,
       password: this.formControls['password'].value,
       name: this.formControls['name'].value,
     };
+
+    this.http
+      .createAccount(payload)
+      .subscribe((data) => {
+        this.notifier.success('Create account with sucess! Redirecting...');
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 2000);
+      })
+      .add(() => {
+        this.isLoading = false;
+      });
   }
 }

@@ -33,4 +33,8 @@ $theme-colors: (
   min-width: 100vw;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 @import "./node_modules/bootstrap/scss/bootstrap";

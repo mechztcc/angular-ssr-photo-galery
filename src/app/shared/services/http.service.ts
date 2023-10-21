@@ -13,6 +13,14 @@ export class HttpService {
     return this.http.post<any>(`auth`, payload);
   }
 
+  createAccount(payload: {
+    email: string;
+    name: string;
+    password: string;
+  }): Observable<any> {
+    return this.http.post<any>(`users`, payload);
+  }
+
   findPhotos(): Observable<PhotoInterface[]> {
     return this.http.get<PhotoInterface[]>(`photo/list`);
   }
