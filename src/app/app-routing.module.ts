@@ -6,9 +6,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { authorizationGuard } from './shared/guards/authorization.guard';
 
 const routes: Routes = [
-  { path: 'create-account', component: CreateAccountComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent, canActivate: [authorizationGuard] },
+  {
+    path: 'create-account',
+    component: CreateAccountComponent,
+    title: 'Create account',
+  },
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  { path: '', component: HomeComponent, title: 'Welcome to your Photo Gallery',canActivate: [authorizationGuard] },
 ];
 
 @NgModule({
