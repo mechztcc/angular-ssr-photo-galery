@@ -1,0 +1,32 @@
+<div class="frame" *ngIf="notifier.isHide" (click)="notifier.onHandle()">
+  <div class="card rounded shadow-lg p-3 d-flex flex-column align-items-center">
+    <i
+      class="fa-solid fa-vial-circle-check text-primary"
+      *ngIf="notifier.type == 'success'"
+    ></i>
+    <i
+      class="fa-solid fa-bomb text-warning"
+      *ngIf="notifier.type == 'error'"
+    ></i>
+    <h3
+      class="mt-3"
+      [ngClass]="{
+        'text-primary': notifier.type == 'success',
+        'text-warning': notifier.type == 'error'
+      }"
+    >
+      {{ notifier.description }}
+    </h3>
+    <span>{{ notifier.title }}</span>
+    <button
+      class="btn p-2 mt-4 w-100"
+      [ngClass]="{
+        'btn-primary': notifier.type == 'success',
+        'btn-warning text-white': notifier.type == 'error'
+      }"
+      (click)="notifier.onHandle()"
+    >
+      Close
+    </button>
+  </div>
+</div>

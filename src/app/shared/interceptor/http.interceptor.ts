@@ -7,10 +7,11 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
+import { NotifierService } from '../services/notifier.service';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private notifier: NotifierService) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -32,7 +33,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
         return event;
       }),
       catchError((response: HttpErrorResponse) => {
-        alert(response.error['message']);
+        this.notifier.error(response.error['message']);
 
         return throwError(() => new Error());
       })

@@ -22,6 +22,7 @@ import { LoadContentComponent } from './components/load-content/load-content.com
 import { LoadButtonComponent } from './components/load-button/load-button.component';
 import { StoreModule } from '@ngrx/store';
 import { photoReducer } from './shared/store/photo.reducer';
+import { NotifierComponent } from './components/notifier/notifier.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { photoReducer } from './shared/store/photo.reducer';
     NotFoundComponent,
     LoadContentComponent,
     LoadButtonComponent,
+    NotifierComponent,
   ],
   imports: [
     BrowserModule,

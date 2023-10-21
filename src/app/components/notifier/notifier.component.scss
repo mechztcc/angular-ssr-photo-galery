@@ -1,0 +1,18 @@
+.frame {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(128, 111, 111, 0.462);
+
+  .card {
+    min-width: 40vw;
+    i {
+      font-size: 45px;
+    }
+  }
+}

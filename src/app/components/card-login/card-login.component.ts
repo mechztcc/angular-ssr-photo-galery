@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/shared/services/http.service';
+import { NotifierService } from 'src/app/shared/services/notifier.service';
 
 @Component({
   selector: 'app-card-login',
@@ -33,7 +34,8 @@ export class CardLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private httpService: HttpService,
-    private router: Router
+    private router: Router,
+    private notifier: NotifierService
   ) {}
 
   ngOnInit(): void {
@@ -57,11 +59,14 @@ export class CardLoginComponent implements OnInit {
     const payload = {
       email: this.formControls['email'].value,
       password: this.formControls['password'].value,
+      lat: '0',
+      long: '0',
     };
 
     this.httpService
       .login(payload)
       .subscribe((data) => {
+        this.notifier.success('Login success!');
         localStorage.setItem('token', data.token);
         this.router.navigate(['/']);
       })
