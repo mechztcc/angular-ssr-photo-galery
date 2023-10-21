@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { HttpService } from 'src/app/shared/services/http.service';
+import { HttpService } from 'src/app/shared/services/http/http.service';
 import { PhotosActions } from 'src/app/shared/store/photo.actions';
 import { PhotoInterface } from 'src/app/shared/types/photo.interface';
 

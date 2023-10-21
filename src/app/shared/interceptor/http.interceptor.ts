@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
-import { NotifierService } from '../services/notifier.service';
+import { NotifierService } from '../services/notifier/notifier.service';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {

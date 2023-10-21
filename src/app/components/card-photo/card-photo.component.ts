@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { HttpService } from 'src/app/shared/services/http.service';
+import { HttpService } from 'src/app/shared/services/http/http.service';
 import { PhotosActions } from 'src/app/shared/store/photo.actions';
 import { PhotoInterface } from 'src/app/shared/types/photo.interface';
 

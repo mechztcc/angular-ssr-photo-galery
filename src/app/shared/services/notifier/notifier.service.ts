@@ -24,7 +24,7 @@ export class NotifierService {
     this.onHandle();
 
     setTimeout(() => {
-      this.onHandle();
+      this.isHide = true;
     }, 3000);
   }
 

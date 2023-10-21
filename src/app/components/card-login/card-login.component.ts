@@ -2,9 +2,9 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpService } from 'src/app/shared/services/http.service';
-import { LocalizationService } from 'src/app/shared/services/localization.service';
-import { NotifierService } from 'src/app/shared/services/notifier.service';
+import { HttpService } from 'src/app/shared/services/http/http.service';
+import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
+import { NotifierService } from 'src/app/shared/services/notifier/notifier.service';
 
 @Component({
   selector: 'app-card-login',
