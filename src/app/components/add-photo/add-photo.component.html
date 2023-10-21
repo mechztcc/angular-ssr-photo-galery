@@ -30,11 +30,13 @@
           type="file"
           #input
           class="form-control p-3"
+          [class.is-invalid]="error"
           (change)="onHandleFile(input.files.item(0))"
         />
       </div>
+      <span class="mt-1 text-warning" *ngIf="error">{{ error }}</span>
 
-      <button class="btn btn-primary p-3 w-100 mt-3" type="submit" *ngIf="!isLoading">
+      <button class="btn btn-primary p-3 w-100 mt-3" type="submit" [disabled]="error" *ngIf="!isLoading">
         <b>Confirm</b>
       </button>
 

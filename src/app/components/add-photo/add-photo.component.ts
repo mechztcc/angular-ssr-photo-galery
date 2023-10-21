@@ -16,6 +16,9 @@ export class AddPhotoComponent implements OnInit {
   formData: FormData;
   isLoading: boolean = false;
 
+  accept: string[] = ['image/jpg', 'image/jpeg'];
+  error: string;
+
   form: FormGroup;
   get formControls() {
     return this.form.controls;
@@ -46,12 +49,19 @@ export class AddPhotoComponent implements OnInit {
   }
 
   onHandleFile(file: File) {
+    if (!this.accept.includes(file.type)) {
+      this.error = 'Format not supported.';
+      return;
+    }
+
+    this.error = null;
+
     this.formData = new FormData();
     this.formData.append('file', file);
   }
 
   onSubmit() {
-    if (this.form.invalid) {
+    if (this.form.invalid || this.error) {
       return;
     }
     this.isLoading = true;

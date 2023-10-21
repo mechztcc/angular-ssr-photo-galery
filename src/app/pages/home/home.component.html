@@ -1,21 +1,26 @@
-<div class="container mt-5">
-  <div class="d-flex justify-content-between">
-    <h1>Your Collection</h1>
-    <div class="d-flex align-items-center">
-      <app-add-photo></app-add-photo>
-      <button class="btn btn-outline-primary mx-2" routerLink="/login">
-        <i class="fa-solid fa-right-from-bracket"></i>
-      </button>
+<div style="min-width: 100vw; min-height: 100vh">
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between flex-column">
+      <h1>Your Collection</h1>
+      <div class="d-flex align-items-center">
+        <app-add-photo></app-add-photo>
+        <button class="btn btn-outline-primary mx-2" routerLink="/login">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div class="row mt-5">
-    <span>Last send photos</span>
-    <div class="col-12 col-md-4 col-lg-3" *ngFor="let photo of store$ | async">
-      <app-card-photo [photo]="photo"></app-card-photo>
+    <div class="row mt-5">
+      <span>Last send photos ( <b>{{ (store$ | async).length }} </b> )</span>
+      <div
+        class="col-12 col-md-4 col-lg-3"
+        *ngFor="let photo of store$ | async"
+      >
+        <app-card-photo [photo]="photo"></app-card-photo>
+      </div>
     </div>
-  </div>
 
-  <app-load-content *ngIf="isLoading"></app-load-content>
-  <app-not-found *ngIf="photos.length == 0 && !isLoading"></app-not-found>
+    <app-load-content *ngIf="isLoading"></app-load-content>
+    <app-not-found *ngIf="(store$ | async).length == 0 && !isLoading"></app-not-found>
+  </div>
 </div>
